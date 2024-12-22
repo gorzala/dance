@@ -555,9 +555,26 @@ paths:
           description: ""
 
   /dancers:
+    get:
+      summary: retrieves all dancers in a predefined range
+      tags:
+        - Dancers
+      parameters:
+        - $ref: '#/components/parameters/range'
+        - $ref: '#/components/parameters/gender'
+      responses:
+        '200':
+          description: retrieves a potentially empty array
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/public_profile"
     post:
       summary: Used to retrieve a list of dancers
       tags:
+        - Dancers
         - Chats
       requestBody:
         content:
@@ -583,6 +600,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+
 components:
   securitySchemes:
     jwt-token:
@@ -629,6 +647,18 @@ components:
       name: lastMessageId
       in: query
       description: Id of the last message already received. If set, the endpoint only returns newer messages
+      schema:
+        type: string
+    gender:
+      name: gender
+      in: query
+      description: preferred gender of the dancers
+      schema:
+        type: string
+    range:
+      name: range
+      in: query
+      description: Range [km] in which the search for dancers should be done
       schema:
         type: string
   schemas:
@@ -765,9 +795,8 @@ components:
           $ref: "#/components/schemas/gender"
         dancerName:
           type: string
-        birthDate:
+        age:
           type: string
-          format: date
         ableTo:
           type: array
           items:
