@@ -1,0 +1,35 @@
+### Perform Captcha to Login as Human
+POST {{baseUrl}}/authentication/loginAsHuman
+X-Captcha-Token: token
+
+> {% client.global.set("access_token", response.body.accessToken); %}
+
+### Perform initial registration
+POST {{baseUrl}}/authentication/registrations
+Content-Type: application/json
+
+{
+  "acceptTermsAndConditions": true,
+  "email": "{{user.email}}",
+  "password": "{{user.password}}"
+
+}
+
+### verify email
+PUT {{baseUrl}}/authentication/email-validations/asdf
+Authorization: Bearer {{access_token}}
+
+### Login with new user
+POST {{baseUrl}}/authentication/login
+Content-Type: application/json
+
+{
+
+}
+
+> {% client.global.set("access_token", response.body.accessToken); %}
+
+
+### Get user's profile
+GET {{baseUrl}}/profile
+Authorization: Bearer {{access_token}}

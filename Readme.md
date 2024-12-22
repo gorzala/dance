@@ -16,12 +16,10 @@ Then in the project root folder create the following directories with the proper
 ````bash
 # for the pg-admin volume
 mkdir -p volumes/pg-admin-data
-sudo chown 5050:5050 volumes/pg-admin-data
 
 # for the kafka volume
 
 mkdir -p volumes/kafka
-sudo chown 1001:1001 volumes/kafka
 ````
 
 You can now access the database GUI with your browser:
@@ -44,7 +42,7 @@ Here you can configure the connection to the postgres instance:
 #### Without test and update the running docker environment
 (assuming the docker-compose setup is up and running)
 ````bash
-./mvnw clean install -DskipTests; docker-compose up --build -d dancer
+./mvnw clean install -DskipTests; docker-compose up --build
 ````
 #### Building with tests
 ````bash

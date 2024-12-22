@@ -1,0 +1,47 @@
+### Login (run once to retrieve access token)
+POST {{baseUrl}}/authentication/login
+Content-Type: application/json
+
+{
+  "email": "{{user.email}}",
+  "password": "{{user.password}}"
+}
+> {% client.global.set("access_token", response.body.accessToken); %}
+
+
+### Get user's proile (and save it)
+GET {{baseUrl}}/profile
+Authorization: Bearer {{access_token}}
+
+> {% client.global.set("profile", response.body.toString()); %}
+
+
+### Save user's profile
+PUT {{baseUrl}}/profile
+Content-Type: application/json
+
+{
+  "size": 130,
+  "gender": "FEMALE",
+  "birthDate": "1996-01-19",
+  "ableTo": [
+    {
+      "dance": "Tango",
+      "level": "BASIC",
+      "leading": "LEAD"
+    }
+  ],
+  "wantsTo": [
+    {
+      "dance": "Tango",
+      "level": "INTERMEDIATE",
+      "leading": "FOLLOW"
+    }
+  ],
+  "email": "1-test@dancier.net",
+  "zipCode": "10001",
+  "city": "Hamburg",
+  "country": "GER",
+  "profileImageHash": "1a7efd460ee0be68011291c9f6b1ac5d9b03f9974b66c27b14e59887bf910f8c",
+  "aboutMe": null
+}
