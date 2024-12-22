@@ -30,10 +30,10 @@ public class DancerController {
     public ResponseEntity<List<PublicProfileDto>> get(
             @CurrentUser AuthenticatedUser authenticatedUser,
             @RequestParam Gender gender,
-            @RequestParam int range
+            @RequestParam(defaultValue = "20") int range
             ) {
         log.info("Fetching list of dancers in {} km range with gender {} for user {}", range, gender, authenticatedUser.getUserId());
-        return ResponseEntity.ok(dancerService.getDancersList(authenticatedUser, gender, range));
+        return ResponseEntity.ok(dancerService.getDancerList(authenticatedUser, gender, range));
     }
 
     @PostMapping("")

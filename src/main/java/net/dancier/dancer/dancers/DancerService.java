@@ -40,11 +40,15 @@ public class DancerService {
         return dancers;
     }
 
-    public List<PublicProfileDto> getDancersList(AuthenticatedUser authenticatedUser, Gender gender, int range) {
+    public List<PublicProfileDto> getDancerList(AuthenticatedUser authenticatedUser, Gender gender, int range) {
 
         Dancer dancer = loadByUserId(authenticatedUser.getUserId());
-        Double longitudeRange = (double)range/112;
-        Double latitudeRange = range/75.78;
+
+        // 1° in longitude in Germany (latitude 47) are 75,78 km
+        double longitudeRange = range/75.78;
+        // 1° in longitude are 112,12 km
+        double latitudeRange = range/112.12;
+
         double upperLatitude = dancer.getLatitude() + latitudeRange;
         double lowerLatitude = dancer.getLatitude() - latitudeRange;
         double upperLongitude = dancer.getLongitude() + longitudeRange;

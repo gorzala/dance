@@ -652,13 +652,13 @@ components:
     gender:
       name: gender
       in: query
-      description: preferred gender of the dancers
+      description: required preferred gender of the dancers
       schema:
         type: string
     range:
       name: range
       in: query
-      description: Range [km] in which the search for dancers should be done
+      description: Range [km] in which the search for dancers should be done, defaults to 20 km
       schema:
         type: string
   schemas:
