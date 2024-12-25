@@ -1,7 +1,7 @@
 package net.dancier.dancer.recommendation;
 
 import lombok.RequiredArgsConstructor;
-import net.dancier.dancer.core.DancerRepository;
+import net.dancier.dancer.dancers.DancerRepository;
 import net.dancier.dancer.core.model.Dancer;
 import net.dancier.dancer.recommendation.model.BaseRecommendation;
 import net.dancier.dancer.recommendation.model.RecommendationWrapper;

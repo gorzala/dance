@@ -15,6 +15,7 @@ import net.dancier.dancer.core.model.Dance;
 import net.dancier.dancer.core.model.DanceProfile;
 import net.dancier.dancer.core.model.Dancer;
 import net.dancier.dancer.core.util.ModelMapper;
+import net.dancier.dancer.dancers.DancerRepository;
 import net.dancier.dancer.location.ZipCode;
 import net.dancier.dancer.location.ZipCodeRepository;
 import org.slf4j.Logger;

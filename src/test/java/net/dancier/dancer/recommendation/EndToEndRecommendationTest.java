@@ -1,7 +1,7 @@
 package net.dancier.dancer.recommendation;
 
 import net.dancier.dancer.AbstractPostgreSQLEnabledTest;
-import net.dancier.dancer.core.DancerRepository;
+import net.dancier.dancer.dancers.DancerRepository;
 import net.dancier.dancer.core.model.Dancer;
 import net.dancier.dancer.recommendation.dto.RecommendationDto;
 import org.junit.jupiter.api.BeforeEach;

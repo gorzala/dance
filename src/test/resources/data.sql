@@ -41,8 +41,8 @@ SELECT '55bbf334-6649-11ed-8f65-5b299f0e161f',
  WHERE name IN ('ROLE_USER', 'ROLE_HUMAN');
 
 INSERT
-  INTO dancer(user_id, id)
-VALUES ('55bbf334-6649-11ed-8f65-5b299f0e161f', '11065e54-664a-11ed-872e-1b1eb88b44b6');
+  INTO dancer(user_id, id, dancer_name, size, birth_date, gender, country, city, longitude, latitude, about_me)
+VALUES ('55bbf334-6649-11ed-8f65-5b299f0e161f', '11065e54-664a-11ed-872e-1b1eb88b44b6', 'good_dancer', '178', '2000-11-11', 'MALE', 'GER', 'Dortmund', '7.1075023', '51.4429498', 'Hi');
 
 -- one admin
 -- no profile attached

@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import net.dancier.dancer.authentication.model.User;
 import net.dancier.dancer.authentication.repository.UserRepository;
-import net.dancier.dancer.core.DancerRepository;
+import net.dancier.dancer.dancers.DancerRepository;
 import net.dancier.dancer.core.model.Dancer;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

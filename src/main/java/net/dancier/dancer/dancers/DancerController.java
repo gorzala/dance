@@ -1,9 +1,10 @@
-package net.dancier.dancer.chat;
+package net.dancier.dancer.dancers;
 
 import lombok.RequiredArgsConstructor;
 import net.dancier.dancer.chat.dto.DancerDto;
 import net.dancier.dancer.chat.dto.DancerIdsDto;
-import net.dancier.dancer.core.DancerService;
+import net.dancier.dancer.core.dto.PublicProfileDto;
+import net.dancier.dancer.core.model.Gender;
 import net.dancier.dancer.security.AuthenticatedUser;
 import net.dancier.dancer.security.CurrentUser;
 import org.slf4j.Logger;
@@ -12,8 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 import static net.dancier.dancer.authentication.Constants.ROLE_USER;
 
@@ -24,6 +24,17 @@ public class DancerController {
     private final static Logger log = LoggerFactory.getLogger(DancerController.class);
 
     private final DancerService dancerService;
+
+    @GetMapping("")
+    @Secured(ROLE_USER)
+    public ResponseEntity<List<PublicProfileDto>> get(
+            @CurrentUser AuthenticatedUser authenticatedUser,
+            @RequestParam Gender gender,
+            @RequestParam(defaultValue = "20") int range
+            ) {
+        log.info("Fetching list of dancers in {} km range with gender {} for user {}", range, gender, authenticatedUser.getUserId());
+        return ResponseEntity.ok(dancerService.getDancerList(authenticatedUser, gender, range));
+    }
 
     @PostMapping("")
     @Secured(ROLE_USER)
